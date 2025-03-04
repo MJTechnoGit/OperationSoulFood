@@ -50,8 +50,8 @@ namespace SoulFood.MessageBus
             }
             finally
             {
-                await sender.DisposeAsync();
-                await client.DisposeAsync();            
+                //await sender.DisposeAsync();
+                //await client.DisposeAsync();            
             } 
         }
     }

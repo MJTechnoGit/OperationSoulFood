@@ -15,6 +15,7 @@ namespace OperationSoulFood.Services.EmailAPI.Messaging
         private readonly IConfiguration _configuration;
 
         private ServiceBusProcessor _emailCartProcessor;
+        private ServiceBusProcessorOptions _emailCartProcessorOptions;
 
         public AzureServiceBusConsumer(IConfiguration configuration)
         {
@@ -25,7 +26,8 @@ namespace OperationSoulFood.Services.EmailAPI.Messaging
             emailCartQueue = _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue");
 
             var client = new ServiceBusClient(serviceBusConnectionString);
-            _emailCartProcessor = client.CreateProcessor(emailCartQueue);
+            _emailCartProcessorOptions = new ServiceBusProcessorOptions() { AutoCompleteMessages = false };
+            _emailCartProcessor = client.CreateProcessor(emailCartQueue, _emailCartProcessorOptions);
         }
 
         public async Task Start()
@@ -53,8 +55,10 @@ namespace OperationSoulFood.Services.EmailAPI.Messaging
 
             try
             {
-                //TODO - try to log the email.
-                await args.CompleteMessageAsync(args.Message);
+                // TODO - try to log the email.
+               await args.CompleteMessageAsync(args.Message);
+               
+                
             }
             catch (Exception ex)
             {
