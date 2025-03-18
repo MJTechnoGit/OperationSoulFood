@@ -187,7 +187,10 @@ namespace OperationSoulFood.Services.ShoppingCartAPI.Controllers
         {
             try
             {
-                await _messageBus.PublishMessage(cartDto, _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue"));
+                var serviceBusConnectionString = _configuration.GetValue<string>("TopicAndQueueNames:ServiceBusConnectionString");
+                var topicAndQueueName = _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue");
+
+                await _messageBus.PublishMessage(cartDto, topicAndQueueName, serviceBusConnectionString);
                 _response.Result = true;
             }
             catch (Exception ex)

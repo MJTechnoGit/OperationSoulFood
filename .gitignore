@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/OperationSoulFood.Services.EmailAPI/appsettings.json
+/OperationSoulFood.Services.AuthAPI/appsettings.json

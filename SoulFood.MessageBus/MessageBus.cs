@@ -15,17 +15,15 @@ namespace SoulFood.MessageBus
     {
 
         private IConfiguration _configuration;
-        private string connectionString;
+       
 
         public MessageBus(IConfiguration configuration)
         {
-            _configuration = configuration;
-            
-            connectionString = "Endpoint=sb://operationsoulweb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XP3CkHcA+7TW2cTBvLE3oTvu1DvXokQa0+ASbEQQwVM=;EntityPath=emailshoppingcart";
+            _configuration = configuration;       
         }
 
-        public async Task PublishMessage(object message, string topic_queue_Name)
-        {
+        public async Task PublishMessage(object message, string topic_queue_Name, string connectionString)        {
+           
             await using var client = new ServiceBusClient(connectionString);
             ServiceBusSender sender = client.CreateSender(topic_queue_Name);
 
@@ -50,8 +48,8 @@ namespace SoulFood.MessageBus
             }
             finally
             {
-                //await sender.DisposeAsync();
-                //await client.DisposeAsync();            
+                await sender.DisposeAsync();
+                await client.DisposeAsync();            
             } 
         }
     }

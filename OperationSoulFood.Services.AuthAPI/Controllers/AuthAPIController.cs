@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OperationSoulFood.Services.AuthAPI.Models.Dto;
 using OperationSoulFood.Services.AuthAPI.Services.IServices;
+using SoulFood.MessageBus;
 using System.Net.NetworkInformation;
 
 namespace OperationSoulFood.Services.AuthAPI.Controllers
@@ -12,11 +13,15 @@ namespace OperationSoulFood.Services.AuthAPI.Controllers
     {
 
         private readonly IAuthService _authService;
+        private readonly IMessageBus _messageBus;
+        private readonly IConfiguration _configuration;
         protected ResponseDto _response;
 
-        public AuthAPIController(IAuthService authService)
+        public AuthAPIController(IAuthService authService, IMessageBus messageBus, IConfiguration configuration)
         {
+            _messageBus = messageBus;
             _authService = authService;
+            _configuration = configuration;
             _response = new();            
         }
 
@@ -31,8 +36,13 @@ namespace OperationSoulFood.Services.AuthAPI.Controllers
                 _response.IsSuccess = false;
                 _response.Message = status; // Get the error message in this situation
 
-                return BadRequest(_response);
+               // return BadRequest(_response);
             }
+
+            var topicAndQueueName = _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserQueue");
+            var serviceBusConnectionString = _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserSBConnectionString");
+
+            await _messageBus.PublishMessage(model.Email, topicAndQueueName, serviceBusConnectionString);
             
             // Everything is ok at this point.
             return Ok(_response);

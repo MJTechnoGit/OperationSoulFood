@@ -4,6 +4,7 @@ using OperationSoulFood.Services.AuthAPI.Data;
 using OperationSoulFood.Services.AuthAPI.Models;
 using OperationSoulFood.Services.AuthAPI.Services;
 using OperationSoulFood.Services.AuthAPI.Services.IServices;
+using SoulFood.MessageBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option =>
 builder.Services.AddControllers();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IMessageBus, MessageBus>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

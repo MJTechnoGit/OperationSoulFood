@@ -77,6 +77,14 @@ namespace OperationSoulFood.Services.AuthAPI.Services
 
         public async Task<string> Register(RegistrationRequestDto registrationRequestDto)
         {
+            bool userExists = await _userManager.FindByEmailAsync(registrationRequestDto.Email) != null;
+            var responseMessage = string.Empty;
+
+            if (userExists)
+            {
+                return responseMessage = "User already exists";
+            }
+
             ApplicationUser user = new()
             {
                 UserName = registrationRequestDto.Email,
@@ -84,9 +92,7 @@ namespace OperationSoulFood.Services.AuthAPI.Services
                 NormalizedEmail = registrationRequestDto.Email.ToUpper(),
                 Name = registrationRequestDto.Name,
                 PhoneNumber = registrationRequestDto.PhoneNumber
-            };
-
-            var responseMessage = string.Empty;
+            };            
 
             try
             {
