@@ -36,11 +36,11 @@ namespace OperationSoulFood.Services.AuthAPI.Controllers
                 _response.IsSuccess = false;
                 _response.Message = status; // Get the error message in this situation
 
-               // return BadRequest(_response);
+               return BadRequest(_response);
             }
 
             var topicAndQueueName = _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserQueue");
-            var serviceBusConnectionString = _configuration.GetValue<string>("TopicAndQueueNames:RegisterUserSBConnectionString");
+            var serviceBusConnectionString = _configuration.GetValue<string>("TopicAndQueueNames:ServiceBusConnectionString");
 
             await _messageBus.PublishMessage(model.Email, topicAndQueueName, serviceBusConnectionString);
             
