@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulFood.MessageBus", "Soul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationSoulFood.Services.EmailAPI", "OperationSoulFood.Services.EmailAPI\OperationSoulFood.Services.EmailAPI.csproj", "{ABC3FDDE-D9A3-4BA0-99B0-994CED110E39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationSoulFood.Services.OrderAPI", "OperationSoulFood.Services.OrderAPI\OperationSoulFood.Services.OrderAPI.csproj", "{F392B28C-BDBD-4E85-8A82-B67A9BE0798F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{ABC3FDDE-D9A3-4BA0-99B0-994CED110E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABC3FDDE-D9A3-4BA0-99B0-994CED110E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABC3FDDE-D9A3-4BA0-99B0-994CED110E39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F392B28C-BDBD-4E85-8A82-B67A9BE0798F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F392B28C-BDBD-4E85-8A82-B67A9BE0798F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F392B28C-BDBD-4E85-8A82-B67A9BE0798F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F392B28C-BDBD-4E85-8A82-B67A9BE0798F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{E0E61A4F-0B04-435F-A037-84F6B9A870D0} = {39575AEE-A3F7-4593-ABA5-46609B1118AB}
 		{6B7658DF-4024-40B5-9F3A-1D327283B3E9} = {F7D94FD6-B9FF-440E-9C75-43ECA7A08BF1}
 		{ABC3FDDE-D9A3-4BA0-99B0-994CED110E39} = {39575AEE-A3F7-4593-ABA5-46609B1118AB}
+		{F392B28C-BDBD-4E85-8A82-B67A9BE0798F} = {39575AEE-A3F7-4593-ABA5-46609B1118AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6DFFBC55-963C-485E-8DDB-5C2EC0B7F597}

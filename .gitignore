@@ -363,3 +363,9 @@ MigrationBackup/
 FodyWeavers.xsd
 /OperationSoulFood.Services.EmailAPI/appsettings.json
 /OperationSoulFood.Services.AuthAPI/appsettings.json
+/OperationSoulFood.Services.OrderAPI/OperationSoulFood.Services.OrderAPI.http
+/OperationSoulFood.Services.OrderAPI/appsettings.json
+/OperationSoulFood.Services.OrderAPI/OperationSoulFood.Services.OrderAPI.csproj
+/OperationSoulFood.Services.OrderAPI/appsettings.Development.json
+/OperationSoulFood.Services.OrderAPI/Properties/launchSettings.json
+/OperationSoulFood.sln

@@ -22,7 +22,7 @@ namespace SoulFood.MessageBus
             _configuration = configuration;       
         }
 
-        public async Task PublishMessage(object message, string topic_queue_Name, string connectionString)        {
+        public async Task PublishMessage(object message, string topic_queue_Name, string connectionString) {
            
             await using var client = new ServiceBusClient(connectionString);
             ServiceBusSender sender = client.CreateSender(topic_queue_Name);
